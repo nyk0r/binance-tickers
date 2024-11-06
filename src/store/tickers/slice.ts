@@ -9,7 +9,7 @@ const getDir = (newPrice: number, oldPrice: Price) => {
   return 1
 }
 
-const initialState: State = {
+export const initialState: State = {
   tickers: [],
   ordersTypes: {},
   prices: {},

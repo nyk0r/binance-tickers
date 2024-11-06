@@ -11,7 +11,7 @@ export const fetchTradingTickers = createAsyncThunk<{
     if (!resp.ok) throw new Error()
 
     const data = await resp.json()
-    const orderTypes = Object.fromEntries(data.symbols.map(s => [s.symbol, s.orderTypes]))
+    const orderTypes = Object.fromEntries(data.symbols.map((s: any) => [s.symbol, s.orderTypes]))
     return {
       tickers: Object.keys(orderTypes).sort(),
       orderTypes,
