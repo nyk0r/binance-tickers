@@ -11,7 +11,7 @@ const Trading: FC = () => {
 
   useEffect(() => {
     dispatch(fetchTradingTickers())
-  }, [])
+  }, [dispatch])
 
   const isLoading = useSelector(getIsLoading)
   const isError = useSelector(getIsError)

@@ -1,0 +1,19 @@
+.tickers {
+  border-spacing: 0;
+  width: 100%;
+
+  th {
+    font-size: 12px;
+    text-align: left;
+    color: var(--c-text-secondary);
+    height: 32px;
+  }
+
+  td {
+    height: 48px;
+  }
+
+  tbody tr:not(:last-child) td {
+    border-bottom: 1px solid #ffffff1a;
+  }
+}

@@ -1,4 +1,21 @@
 :root {
+  --c-background: #1e1e1e;
+  --c-paper: #303030;
+
+  --c-text-primary: #e2e8f0;
+  --c-text-secondary: #ffffff66;
+
+  --radius-lg: 8px;
+  --radius-sm: 4px;
+
+  --xxxs-indent: 2px;
+  --xxs-indent: 4px;
+  --xs-indent: 8px;
+  --s-indent: 16px;
+  --m-indent: 24px;
+}
+
+:root {
   font-family:
     system-ui,
     -apple-system,
@@ -10,12 +27,14 @@
     Oxygen,
     Cantarell,
     sans-serif;
+
+  font-size: 14px;
   line-height: 1.5;
-  font-weight: 400;
+  font-weight: 600;
 
   color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  color: var(--c-text-primary);
+  background-color: var(--c-background);
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;

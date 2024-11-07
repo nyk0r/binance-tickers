@@ -15,8 +15,13 @@ export type Paging = {
   size: number
 }
 
+export type Ticker = {
+  symbol: string
+  baseAsset: string
+}
+
 export type State = {
-  tickers: readonly string[]
+  tickers: readonly Ticker[]
   ordersTypes: Partial<Record<string, readonly string[]>>
   prices: Partial<Record<string, TickerPrice>>
 
@@ -27,7 +32,7 @@ export type State = {
 }
 
 export type TickerInfo = {
-  ticker: string
+  ticker: Ticker
   ordersTypes: readonly string[]
   prices: TickerPrice
 }

@@ -1,11 +1,11 @@
 import { createSelector } from '@reduxjs/toolkit'
 
 import { RootState } from '@/store/store'
-import { TickerInfo } from './types.ts'
+import { TickerInfo, Ticker } from './types.ts'
 
 const getRaw = (state: RootState) => state.tickers
 
-export const getActiveTickers = createSelector([getRaw], ({ tickers, paging }): string[] =>
+export const getActiveTickers = createSelector([getRaw], ({ tickers, paging }): Ticker[] =>
   tickers.slice(paging.size * paging.active, paging.size),
 )
 
@@ -14,8 +14,8 @@ export const getActiveTickersInfo = createSelector(
   ({ prices, ordersTypes }, tickers): TickerInfo[] =>
     tickers.map(ticker => ({
       ticker,
-      ordersTypes: ordersTypes[ticker] ?? [],
-      prices: prices[ticker] ?? {
+      ordersTypes: ordersTypes[ticker.symbol] ?? [],
+      prices: prices[ticker.symbol] ?? {
         ask: { price: 0, dir: 0 },
         bid: { price: 0, dir: 0 },
       },

@@ -47,7 +47,7 @@ const slice = createSlice({
         if (payload.ask === prevPrice.ask.price && payload.bid === prevPrice.bid.price) return
 
         state.prices[payload.ticker] = {
-          ask: { price: payload.ask, dir: getDir(payload.ask, prevPrice.ask)},
+          ask: { price: payload.ask, dir: getDir(payload.ask, prevPrice.ask) },
           bid: { price: payload.bid, dir: getDir(payload.bid, prevPrice.bid) },
         }
       }

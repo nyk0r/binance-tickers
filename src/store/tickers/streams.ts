@@ -25,11 +25,13 @@ ws.addEventListener('message', e => {
 
   const data = JSON.parse(e.data)
   if (isBookMessage(data)) {
-    store.dispatch(setPrices({
-      ticker: data.s,
-      ask: parseFloat(data.a),
-      bid: parseFloat(data.b),
-    }))
+    store.dispatch(
+      setPrices({
+        ticker: data.s,
+        ask: parseFloat(data.a),
+        bid: parseFloat(data.b),
+      }),
+    )
   }
 })
 

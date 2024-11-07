@@ -8,7 +8,7 @@ export const register = (startListening: StartListening) => {
     actionCreator: fetchTradingTickers.fulfilled,
     effect: (_, { getState }) => {
       const state = getState()
-      const tickers = getActiveTickers(state)
+      const tickers = getActiveTickers(state).map(t => t.symbol)
       addSymbols(tickers)
     },
   })
