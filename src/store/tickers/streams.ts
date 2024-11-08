@@ -28,8 +28,8 @@ ws.addEventListener('message', e => {
     store.dispatch(
       setPrices({
         ticker: data.s,
-        ask: parseFloat(data.a),
-        bid: parseFloat(data.b),
+        ask: data.a,
+        bid: data.b,
       }),
     )
   }
@@ -44,6 +44,8 @@ const sendOrBuffer = (message: Parameters<typeof ws.send>[0]) => {
 }
 
 export const addSymbols = (symbols: string[]) => {
+  if (symbols.length === 0) return
+
   sendOrBuffer(
     JSON.stringify({
       method: 'SUBSCRIBE',
@@ -54,6 +56,8 @@ export const addSymbols = (symbols: string[]) => {
 }
 
 export const removeSymbols = (symbols: string[]) => {
+  if (symbols.length === 0) return
+
   sendOrBuffer(
     JSON.stringify({
       method: 'UNSUBSCRIBE',

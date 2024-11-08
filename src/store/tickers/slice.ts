@@ -1,11 +1,15 @@
 import { createSlice, type PayloadAction } from '@reduxjs/toolkit'
+import { Decimal } from 'decimal.js'
 
 import { State, Price } from './types'
 import { fetchTradingTickers } from './thunks'
 
-const getDir = (newPrice: number, oldPrice: Price) => {
-  if (newPrice === oldPrice.price) return oldPrice.dir
-  if (newPrice < oldPrice.price) return -1
+const getDir = (newPrice: string, oldPrice: Price) => {
+  const op = new Decimal(oldPrice.price)
+  const np = new Decimal(newPrice)
+
+  if (np.eq(op)) return oldPrice.dir
+  if (np.lt(op)) return -1
   return 1
 }
 
@@ -14,6 +18,7 @@ export const initialState: State = {
   ordersTypes: {},
   prices: {},
 
+  filer: '',
   paging: {
     active: 0,
     size: 10,
@@ -33,8 +38,8 @@ const slice = createSlice({
         payload,
       }: PayloadAction<{
         ticker: string
-        ask: number
-        bid: number
+        ask: string
+        bid: string
       }>,
     ) => {
       const prevPrice = state.prices[payload.ticker]
@@ -51,6 +56,9 @@ const slice = createSlice({
           bid: { price: payload.bid, dir: getDir(payload.bid, prevPrice.bid) },
         }
       }
+    },
+    setFilter: (state, { payload }: PayloadAction<string>) => {
+      state.filer = payload
     },
   },
   extraReducers: builder => {
@@ -73,4 +81,4 @@ const slice = createSlice({
 
 export default slice.reducer
 
-export const { setPrices } = slice.actions
+export const { setPrices, setFilter } = slice.actions

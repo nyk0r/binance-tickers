@@ -1,0 +1,27 @@
+.search {
+  position: relative;
+
+  .decor {
+    position: absolute;
+    color: var(--c-input-placeholder);
+    left: 12px;
+    top: 12px;
+  }
+
+  .input {
+    box-sizing: border-box;
+    width: 100%;
+
+    padding: 12px 12px 12px 32px;
+    border: 1px solid var(--c-input-border);
+    background-color: var(--c-background);
+    border-radius: var(--radius-lg);
+
+    font-weight: 500;
+    color: var(--c-text-primary);
+
+    &::placeholder {
+      color: var(--c-input-placeholder);
+    }
+  }
+}

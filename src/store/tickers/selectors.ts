@@ -5,8 +5,10 @@ import { TickerInfo, Ticker } from './types.ts'
 
 const getRaw = (state: RootState) => state.tickers
 
-export const getActiveTickers = createSelector([getRaw], ({ tickers, paging }): Ticker[] =>
-  tickers.slice(paging.size * paging.active, paging.size),
+export const getActiveTickers = createSelector([getRaw], ({ tickers, filer, paging }): Ticker[] =>
+  tickers
+    .filter(t => t.symbol.includes(filer.toUpperCase()))
+    .slice(paging.size * paging.active, paging.size),
 )
 
 export const getActiveTickersInfo = createSelector(
@@ -16,8 +18,8 @@ export const getActiveTickersInfo = createSelector(
       ticker,
       ordersTypes: ordersTypes[ticker.symbol] ?? [],
       prices: prices[ticker.symbol] ?? {
-        ask: { price: 0, dir: 0 },
-        bid: { price: 0, dir: 0 },
+        ask: { price: '', dir: 0 },
+        bid: { price: '', dir: 0 },
       },
     })),
 )

@@ -1,7 +1,7 @@
 export type PriceDirection = -1 | 0 | 1
 
 export type Price = {
-  price: number
+  price: string
   dir: PriceDirection
 }
 
@@ -25,6 +25,7 @@ export type State = {
   ordersTypes: Partial<Record<string, readonly string[]>>
   prices: Partial<Record<string, TickerPrice>>
 
+  filer: string
   paging: Paging
 
   loading: boolean
