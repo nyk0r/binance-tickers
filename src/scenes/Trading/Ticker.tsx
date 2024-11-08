@@ -5,7 +5,7 @@ import { TickerInfo } from '@/store/tickers/types'
 
 import Symbol from '@/components/Symbol'
 import Price from '@/components/Price'
-import OrdersList from '@/components/OrdersList'
+import OrderTypes from '@/components/OrderTypes'
 import ChevronRightIcon from '@/components/icons/ChevronRightIcon'
 
 import s from './Tickers.module.css'
@@ -40,7 +40,7 @@ const Ticker: FC<TickersProps> = ({ value }) => {
       {opened && (
         <tr>
           <td className={s.details} colSpan={3}>
-            <OrdersList orders={value.ordersTypes} />
+            <OrderTypes orders={value.ordersTypes} />
           </td>
         </tr>
       )}

@@ -1,1 +1,1 @@
-export { type SymbolProps, default } from './Symbols'
+export { type SymbolProps, default } from './Symbol'

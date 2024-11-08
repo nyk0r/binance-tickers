@@ -51,12 +51,12 @@
     td:first-child {
       padding-left: var(--xs-indent);
     }
-    
+
     td:last-child {
       padding-right: var(--xs-indent);
     }
 
-    &:hover { 
+    &:hover {
       background-color: var(--c-bg-hover);
     }
   }
