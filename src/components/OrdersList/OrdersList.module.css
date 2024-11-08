@@ -1,0 +1,12 @@
+.list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--xs-indent);
+
+  .order {
+    border-radius: var(--radius-sm);
+    line-height: 24px;
+    background-color: var(--c-info);
+    padding: 0 var(--xxs-indent);
+  }
+}

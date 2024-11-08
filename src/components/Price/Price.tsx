@@ -1,24 +1,23 @@
 import { FC, memo } from 'react'
 import cx from 'classnames'
 
-import { PriceDirection } from '@/store/tickers/types'
+import { Price as PriceData } from '@/store/tickers/types'
 
 import s from './Price.module.css'
 
 export type PriceProps = {
-  value: string
-  dir: PriceDirection
+  value: PriceData
 }
 
-const Price: FC<PriceProps> = ({ value, dir }) => (
+const Price: FC<PriceProps> = ({ value }) => (
   <div
     className={cx(s.price, {
-      [s.flat]: dir === 0,
-      [s.down]: dir === -1,
-      [s.up]: dir === 1,
+      [s.flat]: value.dir === 0,
+      [s.down]: value.dir === -1,
+      [s.up]: value.dir === 1,
     })}
   >
-    {value || '―'}
+    {value.price || '―'}
   </div>
 )
 

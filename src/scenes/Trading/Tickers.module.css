@@ -23,7 +23,41 @@
     height: 48px;
   }
 
-  tbody tr:not(:last-child) td {
+  tbody tr:not(:last-child, .opened) td {
     border-bottom: 1px solid var(--c-border-light);
+  }
+
+  .chevron {
+    display: inline-block;
+    margin-right: var(--xs-indent);
+  }
+
+  .opened {
+    background-color: var(--c-bg-active);
+
+    .chevron {
+      transform: rotate(90deg);
+    }
+  }
+
+  .details {
+    padding: var(--xs-indent);
+    background-color: var(--c-bg-active);
+  }
+
+  .main {
+    cursor: pointer;
+
+    td:first-child {
+      padding-left: var(--xs-indent);
+    }
+    
+    td:last-child {
+      padding-right: var(--xs-indent);
+    }
+
+    &:hover { 
+      background-color: var(--c-bg-hover);
+    }
   }
 }

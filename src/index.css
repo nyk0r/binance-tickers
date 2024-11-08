@@ -6,13 +6,16 @@
   --c-text-secondary: #ffffff66;
 
   --c-border-light: #ffffff1a;
-
   --c-input-border: #4b5563;
   --c-input-placeholder: #69778a;
+
+  --c-bg-active: #393939;
+  --c-bg-hover: #434343;
 
   --c-price-flat-bg: #5a5a5a;
   --c-price-down-bg: #bc3030;
   --c-price-up-bg: #067e55;
+  --c-info: #1c64f2;
 
   --radius-lg: 8px;
   --radius-sm: 4px;
