@@ -3,12 +3,20 @@ import debounce from 'debounce'
 
 import { useDispatch, useSelector } from '@/store'
 import { fetchTradingTickers } from '@/store/tickers/thunks'
-import { getIsError, getIsLoading, getActiveTickersInfo } from '@/store/tickers/selectors'
-import { setFilter } from '@/store/tickers/slice'
+import {
+  getIsError,
+  getIsLoading,
+  getActiveTickersInfo,
+  getPaging,
+} from '@/store/tickers/selectors'
+import { setFilter, setActivePage } from '@/store/tickers/slice'
 
 import Search from '@/components/Search'
+import Pagination from '@/components/Pagination'
 
 import Tickers from './Tickers'
+
+import s from './Tickers.module.css'
 
 const Trading: FC = () => {
   const dispatch = useDispatch()
@@ -20,6 +28,7 @@ const Trading: FC = () => {
   const isLoading = useSelector(getIsLoading)
   const isError = useSelector(getIsError)
   const data = useSelector(getActiveTickersInfo)
+  const paging = useSelector(getPaging)
 
   const handleSearch = useCallback(
     debounce((value: string) => {
@@ -28,17 +37,31 @@ const Trading: FC = () => {
     [dispatch],
   )
 
+  const handleSetAcivePage = useCallback(
+    (page: number) => {
+      dispatch(setActivePage(page))
+    },
+    [dispatch],
+  )
+
   return (
-    <div>
+    <>
       {isLoading && 'Loading...'}
       {isError && 'Something went wrong'}
       {!(isLoading || isError) && (
         <>
-          <Search onChange={handleSearch} />
-          <Tickers items={data} />
+          <div className={s.content}>
+            <Search onChange={handleSearch} />
+            <Tickers items={data} />
+          </div>
+          <Pagination
+            currentPage={paging.active}
+            totalPages={paging.totalPages}
+            onChange={handleSetAcivePage}
+          />
         </>
       )}
-    </div>
+    </>
   )
 }
 

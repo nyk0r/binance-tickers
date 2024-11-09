@@ -1,3 +1,7 @@
+.content {
+  padding: var(--s-indent);
+}
+
 .empty {
   margin: 150px 0;
   display: flex;
@@ -30,6 +34,7 @@
   .chevron {
     display: inline-block;
     margin-right: var(--xs-indent);
+    vertical-align: middle;
   }
 
   .opened {

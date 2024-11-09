@@ -1,8 +1,7 @@
 .app {
   background-color: var(--c-paper);
   border-radius: var(--radius-lg);
-  padding: var(--s-indent);
 
-  max-width: 430px;
+  max-width: 428px;
   margin: 50px auto;
 }

@@ -43,26 +43,36 @@ const sendOrBuffer = (message: Parameters<typeof ws.send>[0]) => {
   }
 }
 
+const messageQueue: object[] = []
+
+const enqueuMessage = (msg: object) => {
+  messageQueue.push(msg)
+}
+
+const sendMessage = () => {
+  if (messageQueue.length !== 0) {
+    sendOrBuffer(JSON.stringify(messageQueue.shift()))
+  }
+  setTimeout(sendMessage, 1000 / 5) // 5 message per second
+}
+sendMessage()
+
 export const addSymbols = (symbols: string[]) => {
   if (symbols.length === 0) return
 
-  sendOrBuffer(
-    JSON.stringify({
-      method: 'SUBSCRIBE',
-      params: symbols.map(s => `${s.toLowerCase()}@bookTicker`),
-      id: null,
-    }),
-  )
+  enqueuMessage({
+    method: 'SUBSCRIBE',
+    params: symbols.map(s => `${s.toLowerCase()}@bookTicker`),
+    id: null,
+  })
 }
 
 export const removeSymbols = (symbols: string[]) => {
   if (symbols.length === 0) return
 
-  sendOrBuffer(
-    JSON.stringify({
-      method: 'UNSUBSCRIBE',
-      params: symbols.map(s => `${s.toLowerCase()}@bookTicker`),
-      id: null,
-    }),
-  )
+  enqueuMessage({
+    method: 'UNSUBSCRIBE',
+    params: symbols.map(s => `${s.toLowerCase()}@bookTicker`),
+    id: null,
+  })
 }

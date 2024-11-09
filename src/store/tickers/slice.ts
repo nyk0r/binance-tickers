@@ -59,6 +59,10 @@ const slice = createSlice({
     },
     setFilter: (state, { payload }: PayloadAction<string>) => {
       state.filer = payload
+      state.paging.active = 0
+    },
+    setActivePage: (state, { payload }: PayloadAction<number>) => {
+      state.paging.active = payload
     },
   },
   extraReducers: builder => {
@@ -81,4 +85,4 @@ const slice = createSlice({
 
 export default slice.reducer
 
-export const { setPrices, setFilter } = slice.actions
+export const { setPrices, setFilter, setActivePage } = slice.actions

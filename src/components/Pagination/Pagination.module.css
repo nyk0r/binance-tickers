@@ -1,0 +1,59 @@
+.pagination {
+  --size: 40px;
+
+  display: flex;
+  border-top: 1px solid var(--c-border-light);
+  justify-content: space-between;
+
+  ul,
+  li,
+  button {
+    all: unset;
+  }
+
+  button {
+    cursor: pointer;
+  }
+
+  .nav {
+    flex-grow: 1;
+  }
+
+  .btns {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .btn {
+    line-height: var(--size);
+    width: var(--size);
+    text-align: center;
+  }
+
+  .arrow {
+    flex-grow: 0;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    line-height: var(--size);
+    width: calc(1.5 * var(--size));
+    border: 0 solid var(--c-border-light);
+
+    &:first-child {
+      text-align: start;
+      border-right-width: 1px;
+    }
+
+    &:last-child {
+      text-align: end;
+      border-left-width: 1px;
+    }
+  }
+
+  .active {
+    background-color: var(--c-info);
+  }
+}

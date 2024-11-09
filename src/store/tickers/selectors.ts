@@ -5,10 +5,14 @@ import { TickerInfo, Ticker } from './types.ts'
 
 const getRaw = (state: RootState) => state.tickers
 
-export const getActiveTickers = createSelector([getRaw], ({ tickers, filer, paging }): Ticker[] =>
-  tickers
-    .filter(t => t.symbol.includes(filer.toUpperCase()))
-    .slice(paging.size * paging.active, paging.size),
+const getFilteredTickers = createSelector([getRaw], ({ tickers, filer }) =>
+  tickers.filter(t => t.symbol.includes(filer.toUpperCase())),
+)
+
+export const getActiveTickers = createSelector(
+  [getRaw, getFilteredTickers],
+  ({ paging }, tickers): Ticker[] =>
+    tickers.slice(paging.size * paging.active, paging.size * paging.active + paging.size),
 )
 
 export const getActiveTickersInfo = createSelector(
@@ -23,6 +27,12 @@ export const getActiveTickersInfo = createSelector(
       },
     })),
 )
+
+export const getPaging = createSelector([getRaw, getFilteredTickers], ({ paging }, tickers) => ({
+  ...paging,
+  totalPages: Math.ceil(tickers.length / paging.size),
+  total: tickers.length,
+}))
 
 export const getIsLoading = createSelector([getRaw], ({ loading }) => loading)
 

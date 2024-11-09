@@ -6,7 +6,7 @@ import type { RootState } from '../store'
 import { fetchTradingTickers } from './thunks'
 import { getActiveTickers } from './selectors'
 import { addSymbols, removeSymbols } from './streams'
-import { setFilter } from './slice'
+import { setFilter, setActivePage } from './slice'
 
 const updateSubscriptions = (oldState: RootState, newState: RootState) => {
   const oldSymbols = new Set(getActiveTickers(oldState).map(t => t.symbol))
@@ -18,7 +18,7 @@ const updateSubscriptions = (oldState: RootState, newState: RootState) => {
 
 export const register = (startListening: StartListening) => {
   startListening({
-    matcher: isAnyOf(fetchTradingTickers.fulfilled, setFilter),
+    matcher: isAnyOf(fetchTradingTickers.fulfilled, setFilter, setActivePage),
     effect: (_, { getOriginalState, getState }) => {
       updateSubscriptions(getOriginalState(), getState())
     },
