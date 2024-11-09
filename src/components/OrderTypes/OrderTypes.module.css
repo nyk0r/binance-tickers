@@ -6,7 +6,7 @@
   .order {
     border-radius: var(--radius-sm);
     line-height: 24px;
-    background-color: var(--c-info);
+    background-color: var(--c-primary);
     padding: 0 var(--xxs-indent);
   }
 }

@@ -54,6 +54,6 @@
   }
 
   .active {
-    background-color: var(--c-info);
+    background-color: var(--c-primary);
   }
 }
