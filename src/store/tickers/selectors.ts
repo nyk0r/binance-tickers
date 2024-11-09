@@ -6,7 +6,7 @@ import { TickerInfo, Ticker } from './types.ts'
 const getRaw = (state: RootState) => state.tickers
 
 const getFilteredTickers = createSelector([getRaw], ({ tickers, filer }) =>
-  tickers.filter(t => t.symbol.includes(filer.toUpperCase())),
+  tickers.filter(t => t.symbol.includes(filer)),
 )
 
 export const getActiveTickers = createSelector(

@@ -58,7 +58,7 @@ const slice = createSlice({
       }
     },
     setFilter: (state, { payload }: PayloadAction<string>) => {
-      state.filer = payload
+      state.filer = payload.trim().toUpperCase()
       state.paging.active = 0
     },
     setActivePage: (state, { payload }: PayloadAction<number>) => {
