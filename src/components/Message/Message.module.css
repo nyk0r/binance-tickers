@@ -1,0 +1,25 @@
+.message {
+  padding: 150px 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--xs-indent);
+  align-items: center;
+  color: var(--c-text-secondary);
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  animation: spin 5s infinite linear forwards;
+  transform-origin: 50% 50%;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0);
+  }
+
+  to {
+    transform: rotate(260deg);
+  }
+}

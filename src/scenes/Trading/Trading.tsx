@@ -13,6 +13,7 @@ import { setFilter, setActivePage } from '@/store/tickers/slice'
 
 import Search from '@/components/Search'
 import Pagination from '@/components/Pagination'
+import Message from '@/components/Message'
 
 import Tickers from './Tickers'
 
@@ -46,8 +47,8 @@ const Trading: FC = () => {
 
   return (
     <>
-      {isLoading && 'Loading...'}
-      {isError && 'Something went wrong'}
+      {isLoading && <Message type='loading' />}
+      {isError && <Message type='error' />}
       {!(isLoading || isError) && (
         <>
           <div className={s.content}>

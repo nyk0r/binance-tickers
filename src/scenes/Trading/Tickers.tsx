@@ -2,7 +2,7 @@ import { FC, memo } from 'react'
 
 import { TickerInfo } from '@/store/tickers/types'
 
-import DeadIcon from '@/components/icons/DeadIcon'
+import Message from '@/components/Message'
 import Ticker from './Ticker'
 
 import s from './Tickers.module.css'
@@ -11,15 +11,8 @@ export type TickersProps = {
   items: readonly TickerInfo[]
 }
 
-const Empty = () => (
-  <div className={s.empty}>
-    <DeadIcon />
-    <div>No results found</div>
-  </div>
-)
-
 const Tickers: FC<TickersProps> = ({ items }) => {
-  if (items.length === 0) return <Empty />
+  if (items.length === 0) return <Message type='empty' />
 
   return (
     <table className={s.tickers}>
@@ -32,7 +25,7 @@ const Tickers: FC<TickersProps> = ({ items }) => {
       </thead>
       <tbody>
         {items.map(item => (
-          <Ticker value={item} />
+          <Ticker value={item} key={item.ticker.symbol} />
         ))}
       </tbody>
     </table>

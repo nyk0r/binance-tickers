@@ -14,7 +14,7 @@ const toReadable = (order: string) => {
 const OrdersList: FC<OrdersTypesProps> = ({ orders }) => (
   <div className={s.list}>
     {orders.map(o => (
-      <div className={s.order}>{toReadable(o)}</div>
+      <div className={s.order} key={o}>{toReadable(o)}</div>
     ))}
   </div>
 )
