@@ -1,7 +1,7 @@
 import { store } from '@/store'
 import { setPrices } from './slice'
 
-const ws = new WebSocket('wss://stream.binance.com:9443/ws')
+const ws = new WebSocket(import.meta.env.VITE_STREAMS_BASE)
 
 type BookMessage = {
   u: string

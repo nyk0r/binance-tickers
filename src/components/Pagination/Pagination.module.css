@@ -53,6 +53,10 @@
     }
   }
 
+  .trancate {
+    color: var(--c-text-secondary);
+  }
+
   .active {
     background-color: var(--c-primary);
   }

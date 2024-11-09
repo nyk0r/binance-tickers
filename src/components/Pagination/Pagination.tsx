@@ -23,7 +23,7 @@ const Pagination: FC<PaginationProps> = ({ totalPages, currentPage, onChange }) 
       setCurrentPage={onChange}
       className={s.pagination}
       truncableText='•'
-      truncableClassName=''
+      truncableClassName={s.trancate}
       edgePageCount={2}
       middlePagesSiblingCount={1}
     >
