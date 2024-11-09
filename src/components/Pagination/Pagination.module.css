@@ -45,11 +45,13 @@
     &:first-child {
       text-align: start;
       border-right-width: 1px;
+      border-bottom-left-radius: var(--radius-lg);
     }
 
     &:last-child {
       text-align: end;
       border-left-width: 1px;
+      border-bottom-right-radius: var(--radius-lg);
     }
   }
 
